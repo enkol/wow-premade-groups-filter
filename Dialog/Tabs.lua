@@ -71,6 +71,7 @@ function Tabs.Tab_OnClick(self, button)
 		local state = {}
 		PGF.Table_UpdateWithDefaults(state, PremadeGroupsFilterState)
 		PremadeGroupsFilterState = state
+		PremadeGroupsFilterState.enabled = false
 
 		Tabs.Update()
 		return
