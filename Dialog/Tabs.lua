@@ -49,14 +49,20 @@ function Tabs.Tab_OnClick(self, button)
 
 	if noData then
 		if isNew then
+			-- copy state
+			local state = {}
+			PGF.Table_UpdateWithDefaults(state, PremadeGroupsFilterState)
+			PremadeGroupsFilterState = state
+
 			-- create new tab
 			data = {
-				state = PremadeGroupsFilterState,
+				state = state,
 				name = "Slot "..id,
-				icon = "Interface\\Icons\\INV_Misc_QuestionMark"
+				icon = "Interface\\Icons\\INV_Misc_QuestionMark",
 			}
 			PremadeGroupsFilterTabs[Tabs.activeCategory][id] = data
 			Tabs.Arrange()
+			Tabs.Update()
 		else
 			Tabs.Update()
 			return -- no data, no right click action
@@ -71,7 +77,6 @@ function Tabs.Tab_OnClick(self, button)
 		local state = {}
 		PGF.Table_UpdateWithDefaults(state, PremadeGroupsFilterState)
 		PremadeGroupsFilterState = state
-		PremadeGroupsFilterState.enabled = false
 
 		Tabs.Update()
 		return
@@ -242,6 +247,12 @@ function Tabs.Remove(id)
 		end
 	else	
 		Tabs.activeTab = nil
+
+		-- deattach state from the tabs PremadeGroupsFilterTabs.state
+		local state = {}
+		PGF.Table_UpdateWithDefaults(state, PremadeGroupsFilterState)
+		PremadeGroupsFilterState = state
+		PremadeGroupsFilterState.enabled = false
 	end
 	
 	Tabs.Arrange()
