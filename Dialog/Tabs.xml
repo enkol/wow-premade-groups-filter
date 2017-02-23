@@ -2,18 +2,18 @@
 ..\FrameXML\UI.xsd">
 	<CheckButton name="PremadeGroupsFilterTabTemplate" virtual="true" hidden="true">
 		<Size>
-			<AbsDimension x="24" y="24"/>
+			<AbsDimension x="32" y="32"/>
 		</Size>
 		<Layers>
 			<Layer level="BACKGROUND">
 				<Texture file="Interface\SpellBook\SpellBook-SkillLineTab">
 					<Size>
-						<AbsDimension x="48" y="48"/>
+						<AbsDimension x="64" y="64"/>
 					</Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
-								<AbsDimension x="-2" y="8"/>
+								<AbsDimension x="-3" y="11"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -23,7 +23,7 @@
 				<Texture name="$parentTabardEmblem" parentKey="TabardEmblem" hidden="true" file="Interface\GuildFrame\GuildEmblemsLG_01">
 					<Size x="28" y="28"/>
 					<Anchors>
-						<Anchor point="TOPLEFT" x="-2" y="2"/>
+						<Anchor point="TOPLEFT" x="-3" y="3"/>
 					</Anchors>
 				</Texture>
 			</Layer>
@@ -40,7 +40,7 @@
 		<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
 		<CheckedTexture file="Interface\Buttons\CheckButtonHilight" alphaMode="ADD"/>
 	</CheckButton>
-	<Frame name="PremadeGroupsFilterTabsFrame">
+	<Frame name="PremadeGroupsFilterTabsFrame" parent="UIParent">
 		<Anchors>
 			<Anchor point="TOPLEFT" relativeTo="PVEFrame" relativePoint="TOPLEFT"/>
 			<Anchor point="BOTTOMRIGHT" relativeTo="PVEFrame" relativePoint="BOTTOMRIGHT"/>
@@ -118,6 +118,15 @@
 					</Anchor>
 				</Anchors>
 			</CheckButton>
+			<CheckButton name="PremadeGroupsFilterTab9" inherits="PremadeGroupsFilterTabTemplate" id="9">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="PremadeGroupsFilterTab8" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-14"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
 		</Frames>
 	</Frame>
 	<CheckButton name="PremadeGroupsFilterTabEditButtonTemplate" inherits="SimplePopupButtonTemplate" virtual="true">
@@ -135,7 +144,7 @@
 		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
 		<CheckedTexture alphaMode="ADD" file="Interface\Buttons\CheckButtonHilight"/>
 	</CheckButton>
-	<Frame name="PremadeGroupsFilterTabEditFrame" toplevel="true" parent="PremadeGroupsFilterDialog" enableMouse="true" hidden="true">
+	<Frame name="PremadeGroupsFilterTabEditFrame" parent="UIParent" toplevel="true" enableMouse="true" hidden="true">
 		<Anchors>
 			<Anchor point="TOPLEFT" relativeTo="PremadeGroupsFilterDialog" relativePoint="TOPLEFT"/>
 			<Anchor point="BOTTOMRIGHT" relativeTo="PremadeGroupsFilterDialog" relativePoint="BOTTOMRIGHT"/>

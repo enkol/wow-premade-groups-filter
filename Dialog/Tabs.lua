@@ -20,7 +20,7 @@
 
 PremadeGroupsFilterTabs = PremadeGroupsFilterTabs or {}
 
-local MAX_TABS = 8
+local MAX_TABS = 9
 
 local PGF = select(2, ...)
 local L = PGF.L
@@ -248,7 +248,7 @@ function Tabs.Remove(id)
 	else	
 		Tabs.activeTab = nil
 
-		-- deattach state from the tabs PremadeGroupsFilterTabs.state
+		-- detach state from the tabs PremadeGroupsFilterTabs.state
 		local state = {}
 		PGF.Table_UpdateWithDefaults(state, PremadeGroupsFilterState)
 		PremadeGroupsFilterState = state
@@ -459,7 +459,9 @@ function PremadeGroupsFilterTabEditFrame_CloseEdit()
 end
 
 function PremadeGroupsFilterTabEditSetName(text)
-	Tabs.SetName(Tabs.activeTab, text)
+	if Tabs.activeTab then
+		Tabs.SetName(Tabs.activeTab, text)
+	end
 end
 
 function PremadeGroupsFilterTabEditFrame_OnLoad(self)
